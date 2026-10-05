@@ -26,15 +26,16 @@ textarea {
 .app {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 56px 0;
+  padding: 64px 0 80px;
 }
+
 
 .page-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 36px;
+  gap: 32px;
+  margin-bottom: 34px;
 }
 
 .semester {
@@ -47,15 +48,19 @@ textarea {
 .page-header h1 {
   margin: 0;
   color: #111827;
-  font-size: 30px;
+  font-size: 32px;
+  font-weight: 750;
   line-height: 1.3;
+  letter-spacing: -0.5px;
 }
 
 .description {
   margin: 10px 0 0;
   color: #6b7280;
   font-size: 15px;
+  line-height: 1.6;
 }
+
 
 .admin-button {
   display: inline-flex;
@@ -84,36 +89,42 @@ textarea {
 
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
 }
+
 
 .summary-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 7px;
 
   min-width: 0;
-  min-height: 105px;
+  min-height: 112px;
 
-  padding: 22px;
+  padding: 22px 24px;
+
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 14px;
+
   background: #ffffff;
+
+  box-shadow: 0 1px 2px rgba(17, 24, 39, 0.03);
 }
 
 .summary-card span {
   color: #6b7280;
   font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: 600;
   white-space: nowrap;
 }
 
 .summary-card strong {
   color: #111827;
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: 750;
+  line-height: 1.1;
 }
 
 @media (max-width: 700px) {
@@ -159,30 +170,43 @@ textarea {
 .controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+
+  width: 100%;
   margin-top: 32px;
 }
+
 
 .search-box {
   flex: 1;
 }
 
+
+
 .search-box input {
   width: 100%;
-  height: 42px;
-  padding: 0 14px;
+  height: 44px;
+
+  padding: 0 15px;
 
   border: 1px solid #d1d5db;
-  border-radius: 9px;
-  background: #ffffff;
+  border-radius: 10px;
 
+  background: #ffffff;
   color: #111827;
+
+  font-size: 14px;
+
   outline: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .search-box input:focus {
   border-color: #9ca3af;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.05);
 }
 
 
@@ -215,7 +239,8 @@ textarea {
 }
 
 .filter-button:hover {
-  background: #f3f4f6;
+  border-color: #d1d5db;
+  background: #f9fafb;
 }
 
 .filter-button.active {
@@ -231,17 +256,57 @@ textarea {
   }
 
   .control-group select {
-    width: 100%;
+    min-width: 160px;
+    height: 44px;
+  
+    padding: 0 38px 0 13px;
+  
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+  
+    background: #ffffff;
+    color: #374151;
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    cursor: pointer;
   }
 
   .status-filter {
-    overflow-x: auto;
-    padding-bottom: 4px;
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
   }
+  
 
   .filter-button {
-    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    min-height: 36px;
+    padding: 0 14px;
+  
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+  
+    background: #ffffff;
+    color: #6b7280;
+  
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
   }
+  
 }
 
 .activity-list {
@@ -356,10 +421,12 @@ textarea {
   font-size: 15px;
   font-weight: 600;
 }
+
+
 .last-updated {
-  margin: 8px 0 0;
+  margin: 7px 0 0;
   color: #9ca3af;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .activity-actions {

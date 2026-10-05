@@ -347,6 +347,37 @@ const [editFormData, setEditFormData] = useState({
   }
 
 
+
+  async function handleQuickEvidenceView(activityId) {
+    const { data, error } = await supabase
+      .from("activity_files")
+      .select("*")
+      .eq("activity_id", activityId)
+      .eq("file_kind", "evidence")
+      .order("created_at", { ascending: true })
+  
+    if (error) {
+      console.error("증빙 이미지 불러오기 오류:", error)
+      alert("증빙 이미지를 불러오는 중 오류가 발생했습니다.")
+      return
+    }
+  
+    if (!data || data.length === 0) {
+      alert("등록된 증빙 이미지가 없습니다.")
+      return
+    }
+  
+    const firstEvidence = data[0]
+  
+    setPreviewImageUrl(
+      getFilePublicUrl(firstEvidence.file_path)
+    )
+  }
+
+
+
+
+
   async function handleAdminLogout() {
     const { error } = await supabase.auth.signOut()
   
@@ -1215,9 +1246,15 @@ const [editFormData, setEditFormData] = useState({
               )}
 
               {activity.status === "completed" && (
-                <button className="secondary-button">
-                  증빙 보기
-                </button>
+                <button
+                className="secondary-button"
+                type="button"
+                onClick={() =>
+                  handleQuickEvidenceView(activity.id)
+                }
+              >
+                증빙 보기
+              </button>
               )}
 
               <button
